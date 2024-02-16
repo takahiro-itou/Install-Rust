@@ -21,4 +21,4 @@ function restore_directory() {
         mv -v "${_dir}.${sfx}" "${_dir}"
     fi
     return 0
-fi
+}
