@@ -3,6 +3,16 @@
 script_dir=$(dirname "$0")
 cur_time=$(date +%Y%m%d-%H%M%S)
 
+function backup_dotfile() {
+    local _file=$1
+    local _sfx=${2:-"${cur_time}"}
+
+    if [[ -f "${_file}" ]] ; then
+        cp -v "${_file}" "${_file}.${_sfx}"
+    fi
+    return 0
+}
+
 function escape_directory() {
     local _dir=$1
     local _sfx=${2:-"${cur_time}"}
