@@ -39,10 +39,11 @@ function restore_file() {
     local _bak=$3
 
     echo "Change of ${_file}"
-    if ! diff -s "${_file}" "${_file}.${cur_time}" ; then
-        mv -v "${_file}" "${_file}.${cur_time}"
+    if ! diff -s "${_file}" "${_file}.${sfx}" ; then
+        mv -v "${_file}" "${_file}.${_bak}"
     fi
-    cp -v "${_file}.${cur_time}" "${_file}"
+    cp -pv "${_file}.${sfx}" "${_file}"
+    return 0
 }
 
 # まず、上書きされる可能性のある
