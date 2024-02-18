@@ -33,6 +33,14 @@ function restore_directory() {
     return 0
 }
 
+function restore_file() {
+    echo "Change of .bashrc"
+    if ! diff -s .bashrc .bashrc.${cur_time} ; then
+        mv -v .bashrc .bashrc.rust.${cur_time}
+    fi
+    cp -v .bashrc.${cur_time} .bashrc
+}
+
 # まず、上書きされる可能性のある
 # ディレクトリとファイルをバックアップする。
 
