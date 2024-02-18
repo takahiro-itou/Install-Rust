@@ -50,8 +50,8 @@ function restore_dotfile() {
 # ディレクトリとファイルをバックアップする。
 
 pushd "${HOME}"
-backup_dotfile '.bashrc'        ".bashrc.${cur_time}"
-backup_dotfile '.bash_profile'  ".bash_profile.${cur_time}"
+backup_dotfile '.bashrc'        "${cur_time}"
+backup_dotfile '.bash_profile'  "${cur_time}"
 
 escape_directory ".cargo"   "${cur_time}"
 escape_directory ".rustup"  "${cur_time}"
