@@ -39,10 +39,10 @@ function restore_dotfile() {
     local _bak=$3
 
     echo "Change of ${_file}"
-    if ! diff -s "${_file}" "${_file}.${sfx}" ; then
+    if ! diff -s "${_file}" "${_file}.${_sfx}" ; then
         mv -v "${_file}" "${_file}.${_bak}"
     fi
-    cp -pv "${_file}.${sfx}" "${_file}"
+    cp -pv "${_file}.${_sfx}" "${_file}"
     return 0
 }
 
