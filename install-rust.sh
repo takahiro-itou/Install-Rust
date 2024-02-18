@@ -59,19 +59,11 @@ escape_directory ".rustup"  "${cur_time}"
 # インストール作業を行う。
 
 
-# 設定ファイルと、念の為バックアップしていた内容を比較する。
+# 設定ファイルに変更あればその内容をバックアップする。
+# その後、インストール前にバックアップした内容に復元する。
 
-echo "Change of .bashrc"
-if ! diff -s .bashrc .bashrc.${cur_time} ; then
-    mv -v .bashrc .bashrc.rust.${cur_time}
-fi
-cp -v .bashrc.${cur_time} .bashrc
-
-echo "Change of .bash_profile"
-if ! diff -s .bash_profile .bash_profile.${cur_time} ; then
-    mv -v .bash_profile .bash_profile.rust.${cur_time}
-fi
-cp -v .bash_profile.${cur_time} .bash_profile
+restore_dotfile '.bashrc' "before-rust.${cur_time}" "after-rust.${cur_time}"
+restore_dotfile '.bash_profile' "before-rust.${cur_time}" "after-rust.${cur_time}"
 
 # リネームしていたディレクトリがあれば復元する。
 
