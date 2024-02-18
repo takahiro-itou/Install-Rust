@@ -33,7 +33,7 @@ function restore_directory() {
     return 0
 }
 
-function restore_file() {
+function restore_dotfile() {
     local _file=$1
     local _sfx=$2
     local _bak=$3
