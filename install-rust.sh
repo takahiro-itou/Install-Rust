@@ -52,13 +52,13 @@ echo "Change of .bashrc"
 if ! diff -s .bashrc .bashrc.${cur_time} ; then
     mv -v .bashrc .bashrc.rust.${cur_time}
 fi
-mv -v .bashrc.${cur_time} .bashrc
+cp -v .bashrc.${cur_time} .bashrc
 
 echo "Change of .bash_profile"
 if ! diff -s .bash_profile .bash_profile.${cur_time} ; then
     mv -v .bash_profile .bash_profile.rust.${cur_time}
 fi
-mv -v .bash_profile.${cur_time} .bash_profile
+cp -v .bash_profile.${cur_time} .bash_profile
 
 # リネームしていたディレクトリがあれば復元する。
 
