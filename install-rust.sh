@@ -34,11 +34,15 @@ function restore_directory() {
 }
 
 function restore_file() {
-    echo "Change of .bashrc"
-    if ! diff -s .bashrc .bashrc.${cur_time} ; then
-        mv -v .bashrc .bashrc.rust.${cur_time}
+    local _file=$1
+    local _sfx=$2
+    local _bak=$3
+
+    echo "Change of ${_file}"
+    if ! diff -s "${_file}" "${_file}.${cur_time}" ; then
+        mv -v "${_file}" "${_file}.${cur_time}"
     fi
-    cp -v .bashrc.${cur_time} .bashrc
+    cp -v "${_file}.${cur_time}" "${_file}"
 }
 
 # まず、上書きされる可能性のある
