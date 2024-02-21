@@ -49,12 +49,14 @@ function restore_dotfile() {
 # まず、上書きされる可能性のある
 # ディレクトリとファイルをバックアップする。
 
+bak_dir="${cur_time}"
+
 pushd "${HOME}"
 backup_dotfile '.bashrc'        "before-rust.${cur_time}"
 backup_dotfile '.bash_profile'  "before-rust.${cur_time}"
 
-escape_directory ".cargo"   "${cur_time}"
-escape_directory ".rustup"  "${cur_time}"
+escape_directory ".cargo"   "${bak_dir}"
+escape_directory ".rustup"  "${bak_dir}"
 
 # インストール作業を行う。
 
@@ -67,5 +69,5 @@ restore_dotfile '.bash_profile' "before-rust.${cur_time}" "after-rust.${cur_time
 
 # リネームしていたディレクトリがあれば復元する。
 
-restore_directory ".cargo" "${cur_time}"
-restore_directory ".rustup" "${cur_time}"
+restore_directory  '.cargo'   "${bak_dir}"
+restore_directory  '.rustup'  "${bak_dir}"
