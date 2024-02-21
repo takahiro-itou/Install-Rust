@@ -1,4 +1,4 @@
-#!/bin/bash  -xue
+#!/bin/bash  -ue
 
 script_dir=$(dirname "$0")
 cur_time=$(date +%Y%m%d-%H%M%S)
