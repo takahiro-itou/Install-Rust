@@ -50,6 +50,8 @@ function restore_dotfile() {
 # ディレクトリとファイルをバックアップする。
 
 bak_dir="${cur_time}"
+bak_dot_bef="before-rust.${cur_time}"
+bak_dot_aft="after-rust.${cur_time}"
 
 pushd "${HOME}"
 backup_dotfile '.bashrc'        "before-rust.${cur_time}"
