@@ -8,7 +8,7 @@ function backup_dotfile() {
     local _sfx=${2:-"${cur_time}"}
 
     if [[ -f "${_file}" ]] ; then
-        cp -v "${_file}" "${_file}.${_sfx}"
+        cp -pv "${_file}" "${_file}.${_sfx}"
     fi
     return 0
 }
