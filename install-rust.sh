@@ -52,7 +52,7 @@ function restore_dotfile() {
         # 元の状態 (ファイルがない状態) に復元する
         echo "New file ${_file}"
         cat  "${_file}"
-        mv -v  "${_file}" "${_file}.${_bak}"
+        mv -v  "${_file}" "${_bak_file}"
         return 0
     fi
 
