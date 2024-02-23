@@ -38,6 +38,27 @@ function restore_dotfile() {
     local _sfx=$2
     local _bak=$3
 
+    local _org_file="${_file}.${_sfx}"
+    local _bak_file="${_file}.${_bak}"
+
+    if [[ ! -f "${_file}" && ! -f "${_org_file}" ]] ; then
+        # 元々ファイルがなく、作成もされていない時は何もしなくて良い
+        return 0
+    fi
+
+    if [[ -f "${_file}" && ! -f "${_org_file}" ]] ; then
+        # 元々ファイルがなかったが、作成された時は、
+        # 新規作成されたファイルのバックアップだけ取り、
+        # 元の状態 (ファイルがない状態) に復元する
+        echo "New file ${_file}"
+        cat  "${_file}"
+        mv -v  "${_file}" "${_file}.${_bak}"
+        return 0
+    fi
+
+    # 元々ファイルがあった場合は、変更点を表示し、
+    # 差分があればその内容のバックアップだけ取り、
+    # 元の状態に復元する。
     echo "Change of ${_file}"
     if ! diff -s "${_file}" "${_file}.${_sfx}" ; then
         mv -v "${_file}" "${_file}.${_bak}"
