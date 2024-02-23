@@ -38,6 +38,14 @@ function restore_dotfile() {
     local _sfx=$2
     local _bak=$3
 
+    local _org_file="${_file}.${_sfx}"
+    local _bak_file="${_file}.${_bak}"
+
+    if [[ ! -f "${_file}" && ! -f "${_org_file}" ]] ; then
+        # 元々ファイルがなく、作成もされていない時は何もしなくて良い
+        return 0
+    fi
+
     echo "Change of ${_file}"
     if ! diff -s "${_file}" "${_file}.${_sfx}" ; then
         mv -v "${_file}" "${_file}.${_bak}"
