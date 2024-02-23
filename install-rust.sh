@@ -61,7 +61,7 @@ function restore_dotfile() {
     # 元の状態に復元する。
     echo "Change of ${_file}"
     if ! diff -s "${_file}" "${_org_file}" ; then
-        mv -v "${_file}" "${_file}.${_bak}"
+        mv -v "${_file}" "${_bak_file}"
     fi
     cp -pv "${_org_file}" "${_file}"
     return 0
