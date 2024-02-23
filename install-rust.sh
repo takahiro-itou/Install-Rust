@@ -56,6 +56,9 @@ function restore_dotfile() {
         return 0
     fi
 
+    # 元々ファイルがあった場合は、変更点を表示し、
+    # 差分があればその内容のバックアップだけ取り、
+    # 元の状態に復元する。
     echo "Change of ${_file}"
     if ! diff -s "${_file}" "${_file}.${_sfx}" ; then
         mv -v "${_file}" "${_file}.${_bak}"
