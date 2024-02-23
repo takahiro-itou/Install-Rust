@@ -77,6 +77,8 @@ bak_dot_aft="after-rust.${cur_time}"
 pushd "${HOME}"
 backup_dotfile  '.bashrc'        "${bak_dot_bef}"
 backup_dotfile  '.bash_profile'  "${bak_dot_bef}"
+backup_dotfile  '.profile'       "${bak_dot_bef}"
+backup_dotfile  '.zshenv'        "${bak_dot_bef}"
 
 escape_directory  '.cargo'   "${bak_dir}"
 escape_directory  '.rustup'  "${bak_dir}"
@@ -87,8 +89,10 @@ escape_directory  '.rustup'  "${bak_dir}"
 # 設定ファイルに変更あればその内容をバックアップする。
 # その後、インストール前にバックアップした内容に復元する。
 
-restore_dotfile  '.bashrc'       "${bak_dot_bef}"  "${bak_dot_aft}"
-restore_dotfile  '.bash_profile' "${bak_dot_bef}"  "${bak_dot_aft}"
+restore_dotfile  '.bashrc'        "${bak_dot_bef}"  "${bak_dot_aft}"
+restore_dotfile  '.bash_profile'  "${bak_dot_bef}"  "${bak_dot_aft}"
+restore_dotfile  '.profile'       "${bak_dot_bef}"  "${bak_dot_aft}"
+restore_dotfile  '.zshenv'        "${bak_dot_bef}"  "${bak_dot_aft}"
 
 # リネームしていたディレクトリがあれば復元する。
 
