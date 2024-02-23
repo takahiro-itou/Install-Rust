@@ -46,6 +46,16 @@ function restore_dotfile() {
         return 0
     fi
 
+    if [[ -f "${_file}" && ! -f "${_org_file}" ]] ; then
+        # 元々ファイルがなかったが、作成された時は、
+        # 新規作成されたファイルのバックアップだけ取り、
+        # 元の状態 (ファイルがない状態) に復元する
+        echo "New file ${_file}"
+        cat  "${_file}"
+        mv -v  "${_file}" "${_file}.${_bak}"
+        return 0
+    fi
+
     echo "Change of ${_file}"
     if ! diff -s "${_file}" "${_file}.${_sfx}" ; then
         mv -v "${_file}" "${_file}.${_bak}"
