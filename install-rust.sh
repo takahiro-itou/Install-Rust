@@ -60,10 +60,10 @@ function restore_dotfile() {
     # 差分があればその内容のバックアップだけ取り、
     # 元の状態に復元する。
     echo "Change of ${_file}"
-    if ! diff -s "${_file}" "${_file}.${_sfx}" ; then
+    if ! diff -s "${_file}" "${_org_file}" ; then
         mv -v "${_file}" "${_file}.${_bak}"
     fi
-    cp -pv "${_file}.${_sfx}" "${_file}"
+    cp -pv "${_org_file}" "${_file}"
     return 0
 }
 
