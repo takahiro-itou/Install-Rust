@@ -91,8 +91,8 @@ escape_directory  '.rustup'  "${bak_dir}"
 
 restore_dotfile  '.bashrc'        "${bak_dot_bef}"  "${bak_dot_aft}"
 restore_dotfile  '.bash_profile'  "${bak_dot_bef}"  "${bak_dot_aft}"
-restore_dotfile  '.profile'       "${bak_dot_aft}"  "${bak_dot_aft}"
-restore_dotfile  '.zshenv'        "${bak_dot_aft}"  "${bak_dot_aft}"
+restore_dotfile  '.profile'       "${bak_dot_bef}"  "${bak_dot_aft}"
+restore_dotfile  '.zshenv'        "${bak_dot_bef}"  "${bak_dot_aft}"
 
 # リネームしていたディレクトリがあれば復元する。
 
