@@ -52,7 +52,7 @@ function restore_dotfile() {
         # 元の状態 (ファイルがない状態) に復元する
         echo "New file ${_file}"
         cat  "${_file}"
-        mv -v  "${_file}" "${_file}.${_bak}"
+        mv -v  "${_file}" "${_bak_file}"
         return 0
     fi
 
@@ -60,10 +60,10 @@ function restore_dotfile() {
     # 差分があればその内容のバックアップだけ取り、
     # 元の状態に復元する。
     echo "Change of ${_file}"
-    if ! diff -s "${_file}" "${_file}.${_sfx}" ; then
-        mv -v "${_file}" "${_file}.${_bak}"
+    if ! diff -s "${_file}" "${_org_file}" ; then
+        mv -v "${_file}" "${_bak_file}"
     fi
-    cp -pv "${_file}.${_sfx}" "${_file}"
+    cp -pv "${_org_file}" "${_file}"
     return 0
 }
 
